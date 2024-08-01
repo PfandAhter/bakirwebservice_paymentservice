@@ -5,8 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreateBalanceRequest{
-    private String username;
-    private Long user_id;
 
+public class AddItemRequest extends BaseRequest {
+    private String productCode;
+
+    private int orderQuantity;
 }

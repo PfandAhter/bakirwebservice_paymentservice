@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class DeleteOrderRequest extends BaseRequest {
-    private Long productCode;
+public class DeleteItemRequest extends BaseRequest {
+    private String productCode;
     private int quantity;
 }

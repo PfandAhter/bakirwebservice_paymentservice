@@ -1,14 +1,14 @@
 package com.bakirwebservice.paymentservice.api.request;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 
-public class AddBalanceRequest extends BaseRequest{
+public class ReduceStockRequest extends BaseRequest{
 
-    private Long amount;
+    private String productId;
 
+    private int orderQuantity;
 }

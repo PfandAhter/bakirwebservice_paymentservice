@@ -3,7 +3,7 @@ package com.bakirwebservice.paymentservice.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table(name = "order_list")
+@Table(name = "shopping_cart")
 @Entity
 @Getter
 @Setter
@@ -11,12 +11,12 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 
-public class OrderList {
+public class ShoppingCart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "order_id")
-    private String orderId;
+    @Column(name = "cart_id")
+    private String shoppingCartId;
 
     @Column(name = "customer_name")
     private String customerName;
@@ -29,9 +29,6 @@ public class OrderList {
 
     @Column(name = "active")
     private int active;
-
-    @Column(name = "tracking_number")
-    private String trackingNumber;
 
     @Column(name = "status")
     private String status;

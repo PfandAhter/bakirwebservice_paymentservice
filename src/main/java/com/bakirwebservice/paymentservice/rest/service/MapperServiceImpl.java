@@ -24,4 +24,14 @@ public class MapperServiceImpl implements IMapperService {
         }
         return target;
     }
+
+    @Override
+    public <D> D map(Object source, Class<D> destinationType) {
+        return modelMapper.map(source, destinationType);
+    }
+
+    @Override
+    public void map(Object source, Object destination) {
+        modelMapper.map(source, destination);
+    }
 }

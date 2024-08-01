@@ -19,21 +19,39 @@ spring:
     banner-mode: off
   application:
     name: payment-service
+
+client:
+  feign:
+    microServiceRegister-service:
+      path: http://localhost:8090/registerservice
+      ready: /ready
+      stopped: /stopped
+
+    user-service:
+      path: http://localhost:8082/user
+      getBalance: /balance/getbalance
+      addBalance: /balance/addbalance
+
+    stock-service:
+      path: http://localhost:8083/stock-service
+      getProduct: /product/get
+      reduceStock: /product/stock/reduce
+
+    token-service:
+      path: http://localhost:8079/token
+      extractUsername: /extract/username
+
 app:
   routesController:
-    requestmapping:
-      paymentServiceController: /paymentservice
-  routes:
-    orderList:
-      getOrderList: /getorderlist
-      createOrder: /createorder
-      deleteByProductCode: /deleteorderbyproductcode
-    balance:
-      getBalance: /getbalance
-      addBalance: /addbalance
-      createBalance: /createbalance
-  microservicePaths:
-    tokenService:
-      extractUsername: http://localhost:8079/tokenservice/extractusername
-    productService:
-      getProductInfo: http://localhost:8083/productservice/product/getproductinfo
+    controllers:
+      secure:
+        paymentServiceController: /payment
+    requestMapping:
+      secure:
+        payment-service:
+          getItemsInCart: /cart/get
+          createOrder: /cart/add
+          deleteByProductCode: /cart/clear
+          buyItemsInCart: /cart/buy
+          queryByTrackingNumber: /query-with-trackingNumber
+          userOrderedProduct: /product/ordered

@@ -1,16 +1,14 @@
 package com.bakirwebservice.paymentservice.api.request;
 
+import com.bakirwebservice.paymentservice.model.dto.ShoppingCartDTO;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
 public class GetProductDetailsRequest {
-    private String productName;
-    private String companyName;
-    private String categoryName;
-    private Long productCode;
-    private Long amount;
-    private String status;
-    private String description;
+
+    List<ShoppingCartDTO> cartDTOList;
 }

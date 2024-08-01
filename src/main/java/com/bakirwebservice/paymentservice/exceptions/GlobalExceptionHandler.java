@@ -38,6 +38,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(createFailResponse(ErrorCodeConstants.SERVICE_UNAVAILABLE));
     }
 
+    @ExceptionHandler(CartListEmptyException.class)
+    public ResponseEntity<BaseResponse> handleException (CartListEmptyException e){
+        return ResponseEntity.badRequest().body(createFailResponse(e.getMessage()));
+    }
+
     private BaseResponse createFailResponse(String message) {
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setStatus("0");

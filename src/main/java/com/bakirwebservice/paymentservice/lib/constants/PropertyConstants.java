@@ -1,26 +1,18 @@
 package com.bakirwebservice.paymentservice.lib.constants;
 
 public class PropertyConstants {
-    //MICROSERVICE PATHS
-    public static final String REQUEST_RESTTEMPLATE_MICROSERVICE_TOKEN_SERVICE_EXTRACT_USERNAME = "${app.microservicePaths.tokenService.extractUsername}";
-
-    public static final String REQUEST_RESTTEMPLATE_MICROSERVICE_PRODUCT_SERVICE_PRODUCT_GET_PRODUCT_INFO = "${app.microservicePaths.productService.getProductInfo}";
-
-
-
     //CONTROLLER PATHS
-    public static final String REQUEST_PAYMENTSERVICE = "${app.routesController.requestmapping.paymentServiceController}";
+    public static final String REQUEST_SECURE_SERVICE_PAYMENT_CONTROLLER = "${app.routesController.controllers.secure.paymentServiceController}";
 
-    public static final String REQUEST_BALANCE_ADD = "${app.routes.balance.addBalance}";
+    public static final String REQUEST_SECURE_REST_CONTROLLER_PAYMENT_SERVICE_ORDER_LIST_GET = "${app.routesController.requestMapping.secure.payment-service.getItemsInCart}";
 
-    public static final String REQUEST_BALANCE_CREATE = "${app.routes.balance.createBalance}";
+    public static final String REQUEST_SECURE_REST_CONTROLLER_PAYMENT_SERVICE_ORDER_LIST_ADD = "${app.routesController.requestMapping.secure.payment-service.createOrder}";
 
-    public static final String REQUEST_BALANCE_GET = "${app.routes.balance.getBalance}";
+    public static final String REQUEST_SECURE_REST_CONTROLLER_PAYMENT_SERVICE_ORDER_LIST_DELETE_ORDER_BY_PRODUCT_CODE = "${app.routesController.requestMapping.secure.payment-service.deleteByProductCode}";
 
-    public static final String REQUEST_ORDERLIST_GET_LIST = "${app.routes.orderList.getOrderList}";
+    public static final String REQUEST_SECURE_REST_CONTROLLER_PAYMENT_SERVICE_ORDER_LIST_BUY = "${app.routesController.requestMapping.secure.payment-service.buyItemsInCart}";
 
-    public static final String REQUEST_ORDERLIST_CREATE_ORDER = "${app.routes.orderList.createOrder}";
+    public static final String REQUEST_SECURE_REST_CONTROLLER_PAYMENT_SERVICE_QUERY_BY_TRACKING_NUMBER = "${app.routesController.requestMapping.secure.payment-service.queryByTrackingNumber}";
 
-    public static final String REQUEST_ORDERLIST_DELETE_BY_PRODUCT_CODE = "${app.routes.orderList.deleteByProductCode}";
-
+    public static final String REQUEST_SECURE_REST_CONTROLLER_PAYMENT_SERVICE_ORDER_LIST_IS_BOUGHT = "${app.routesController.requestMapping.secure.payment-service.userOrderedProduct}";
 }

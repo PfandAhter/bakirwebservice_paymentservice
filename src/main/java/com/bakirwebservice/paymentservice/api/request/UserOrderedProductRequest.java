@@ -1,13 +1,16 @@
 package com.bakirwebservice.paymentservice.api.request;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 
-public class CreateOrderRequest extends BaseRequest {
-    private Long productCode;
+public class UserOrderedProductRequest {
 
-    private int orderQuantity;
+    private String username;
+
+    private String productId;
 }
+
