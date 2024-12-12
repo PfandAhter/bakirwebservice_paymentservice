@@ -14,7 +14,7 @@ public interface ShoppingCartRepository extends JpaRepository<ShoppingCart,Strin
     @Query("SELECT sc FROM ShoppingCart sc WHERE ( sc.customerName = ?1 and sc.productCode = ?2) and sc.active = 1")
     ShoppingCart findByCustomerNameAndProductCode(String customerName , String productCode);
 
-    @Query("select sc from ShoppingCart sc where (sc.customerName = ?1) and sc.active = 1 ")
+    @Query("select sc from ShoppingCart sc where (sc.customerName = ?1) and sc.active LIKE 'ACTIVE'")
     List<ShoppingCart> findShoppingCartsByCriteria (String customerName);
 
 }

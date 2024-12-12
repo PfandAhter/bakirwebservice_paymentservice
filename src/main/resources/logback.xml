@@ -1,0 +1,38 @@
+<configuration>
+    <!--    <property name="LOGS" value="./logs" />-->
+    <!--    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}spring.log}"/>-->
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
+    <property name="LOG_PATH" value="C:/DEMOS/ServiceLogs/BakirWebService" />
+    <property name="SERVICE_NAME" value="PaymentService" />
+
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %highlight((%d{yyyy-MM-dd HH:mm:ss.SSS}) [%thread] %highlight(%-5level){FATAL=red, ERROR=red, WARN=yellow, INFO=GREEN, DEBUG=BLUE, TRACE=cyan} %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--        <file>${LOG_PATH}/spring.log</file>-->
+        <!--        <append>true</append>-->
+        <!--        <createOnDemand>true</createOnDemand>-->
+        <!--        /spring.log-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Log dosyasının günlü olarak döndürülmesi ve eski logların saklanması -->
+            <!--            <fileNamePattern>${LOG_PATH}/spring-%d{yyyy-MM-dd}.log</fileNamePattern>-->
+            <fileNamePattern>${LOG_PATH}/${SERVICE_NAME}/%d{yyyy/M/d}/logfile.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="Console" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>

@@ -18,12 +18,4 @@ public class HeaderServiceImpl implements IHeaderService {
         return commonHeader;
     }
 
-
-    //TODO testing...
-    public CommonHeader getHeader(ServerHttpRequest request) {
-        CommonHeader commonHeader = new CommonHeader();
-        request.getHeaders().containsKey("ROLE");
-        return commonHeader;
-    }
-
 }

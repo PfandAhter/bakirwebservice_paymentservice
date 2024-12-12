@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class AddItemRequest extends BaseRequest {
+public class AddToCartRequest extends BaseRequest {
     private String productCode;
 
     private int orderQuantity;

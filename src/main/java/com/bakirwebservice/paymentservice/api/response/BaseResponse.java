@@ -4,6 +4,7 @@ import com.bakirwebservice.paymentservice.lib.constants.Constants;
 import com.bakirwebservice.paymentservice.lib.constants.ResponseStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

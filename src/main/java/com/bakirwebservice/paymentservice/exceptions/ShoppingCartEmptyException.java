@@ -2,16 +2,16 @@ package com.bakirwebservice.paymentservice.exceptions;
 
 import lombok.Getter;
 
-public class CartListEmptyException extends Exception {
+public class ShoppingCartEmptyException extends Exception {
     @Getter
     private String message;
 
-    public CartListEmptyException(){
+    public ShoppingCartEmptyException(){
         super();
         this.message = null;
     }
 
-    public CartListEmptyException(String message){
+    public ShoppingCartEmptyException(String message){
         super();
         this.message = message;
     }

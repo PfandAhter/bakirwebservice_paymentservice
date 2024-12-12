@@ -28,7 +28,7 @@ public class OrderList {
     private int orderQuantity;
 
     @Column(name = "active")
-    private int active;
+    private String active;
 
     @Column(name = "tracking_number")
     private String trackingNumber;

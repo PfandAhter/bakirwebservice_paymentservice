@@ -28,7 +28,7 @@ public class ShoppingCart {
     private int orderQuantity;
 
     @Column(name = "active")
-    private int active;
+    private String active;
 
     @Column(name = "status")
     private String status;

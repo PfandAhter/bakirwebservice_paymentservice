@@ -1,19 +1,14 @@
 package com.bakirwebservice.paymentservice.rest.controller;
 
 
-import com.bakirwebservice.paymentservice.api.request.AddItemRequest;
-import com.bakirwebservice.paymentservice.api.request.DeleteItemRequest;
-import com.bakirwebservice.paymentservice.api.request.BaseRequest;
-import com.bakirwebservice.paymentservice.api.request.UserOrderedProductRequest;
+import com.bakirwebservice.paymentservice.api.request.*;
 import com.bakirwebservice.paymentservice.api.response.BaseResponse;
-import com.bakirwebservice.paymentservice.api.response.BuyOrdersOnCartTrackingNumberResponse;
 import com.bakirwebservice.paymentservice.api.response.GetItemsListInCartResponse;
 import com.bakirwebservice.paymentservice.api.response.QueryTrackingNumberResponse;
-import com.bakirwebservice.paymentservice.exceptions.CartListEmptyException;
-import com.bakirwebservice.paymentservice.exceptions.InsufficientBalanceException;
 import com.bakirwebservice.paymentservice.lib.constants.PropertyConstants;
 import com.bakirwebservice.paymentservice.rest.controller.api.PaymentRestServiceApi;
 import com.bakirwebservice.paymentservice.rest.service.ShoppingCartServiceImpl;
+import com.bakirwebservice.paymentservice.rest.validator.ShoppingCartServiceValidator;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,28 +26,44 @@ public class PaymentServiceController implements PaymentRestServiceApi {
 
     private final ShoppingCartServiceImpl paymentService;
 
+    private final ShoppingCartServiceValidator serviceValidator;
+
     @Override
-    public ResponseEntity<BaseResponse> createOrder(AddItemRequest addItemRequest, HttpServletRequest request, BindingResult bindingResult) {
-        return ResponseEntity.ok(paymentService.addItemOnCart(addItemRequest));
+    public ResponseEntity<BaseResponse> addToCart(AddToCartRequest addToCartRequest, HttpServletRequest request, BindingResult bindingResult) {
+        serviceValidator.addToCartValidator(addToCartRequest);
+
+        return ResponseEntity.ok(paymentService.addToCart(addToCartRequest));
     }
 
     @Override
-    public ResponseEntity<BaseResponse> deleteOrder(DeleteItemRequest deleteItemRequest, HttpServletRequest request, BindingResult bindingResult) {
-        return ResponseEntity.ok(paymentService.deleteItemOnCart(deleteItemRequest));
+    public ResponseEntity<BaseResponse> deleteFromCart(DeleteFromCartRequest deleteFromCartRequest, HttpServletRequest request, BindingResult bindingResult) {
+        serviceValidator.deleteFromCartValidator(deleteFromCartRequest);
+
+        return ResponseEntity.ok(paymentService.deleteFromCart(deleteFromCartRequest));
     }
 
     @Override
-    public ResponseEntity<GetItemsListInCartResponse> getShoppingCartItems(BaseRequest baseRequest, HttpServletRequest request)throws CartListEmptyException {
-        return ResponseEntity.ok(paymentService.getItemListInCart(baseRequest));
+    public ResponseEntity<GetItemsListInCartResponse> getShoppingCart(BaseRequest baseRequest, HttpServletRequest request){
+        serviceValidator.getShoppingCartValidator(baseRequest);
+
+        return ResponseEntity.ok(paymentService.getShoppingCart(baseRequest));
     }
 
     @Override
-    public ResponseEntity<BuyOrdersOnCartTrackingNumberResponse> buyItemsInCart(BaseRequest baseRequest, HttpServletRequest request) throws CartListEmptyException , InsufficientBalanceException {
-        return ResponseEntity.ok(paymentService.buyOrdersOnCartsAndReturnTrackingNumber(baseRequest));
+    public ResponseEntity<BaseResponse> shoppingCartCheckout(ShoppingCartCheckoutRequest shoppingCartCheckoutRequest, HttpServletRequest request){
+        serviceValidator.completePurchaseAndReturnTrackingNumberValidator(shoppingCartCheckoutRequest);
+        paymentService.startShoppingCartCheckout(shoppingCartCheckoutRequest);
+
+
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setErrorDescription("ISLEMINIZ BASARIYLA ALINDI.");
+        return ResponseEntity.ok(baseResponse);
     }
 
     @Override
     public ResponseEntity<QueryTrackingNumberResponse> queryByTrackingNumber(String trackingNumber , BaseRequest baseRequest) {
+        serviceValidator.queryTrackingNumberResponseValidator(trackingNumber, baseRequest);
+
         return ResponseEntity.ok(paymentService.queryTrackingNumberResponse(trackingNumber , baseRequest));
     }
 

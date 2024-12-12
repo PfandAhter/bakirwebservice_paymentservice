@@ -9,13 +9,13 @@ import java.sql.Timestamp;
 @Setter
 
 public class MicroServiceReadyRequest {
-    private String microServiceCode;
+    private String serviceCode;
 
-    private String microServiceName;
+    private String serviceName;
 
-    private String microServiceErrorCode;
+    private String errorCode;
 
-    private Timestamp microServiceReadyDate;
+    private Timestamp serviceReadyDate;
 
-    private String microServiceStatus;
+    private String serviceStatus;
 }

@@ -11,11 +11,11 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<OrderList,String> {
     @Value("SELECT sc FROM shopping_cart sc WHERE (sc.customer_name = ?1) and sc.active = ?2")
-    OrderList findByCustomerNameAndActive (String customerName,int active);
+    OrderList findByCustomerNameAndActive (String customerName,String active);
 
 
     @Value("SELECT * FROM payment_service.order_list WHERE customer_name = ?1 and active = ?2")
-    List<OrderList> findOrderListsByCustomerNameAndActive(String customerName, int active);
+    List<OrderList> findOrderListsByCustomerNameAndActive(String customerName, String active);
 
     @Value("SELECT * FROM payment_service.order_list WHERE (customer_name = ?1 and product_code = ?2) and status = 1")
     OrderList findByCustomerNameAndProductCode(String customerName , String productCode);

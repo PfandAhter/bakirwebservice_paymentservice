@@ -11,13 +11,13 @@ import java.sql.Timestamp;
 
 public class MicroServiceStoppedRequest {
 
-    private String microServiceCode;
+    private String serviceCode;
 
-    private String microServiceName;
+    private String serviceName;
 
-    private String microServiceErrorCode;
+    private String errorCode;
 
-    private Timestamp microServiceStoppedDate;
+    private Timestamp serviceStoppedDate;
 
-    private String microServiceStatus;
+    private String serviceStatus;
 }

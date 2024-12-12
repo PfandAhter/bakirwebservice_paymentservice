@@ -10,7 +10,7 @@ public class PropertyConstants {
 
     public static final String REQUEST_SECURE_REST_CONTROLLER_PAYMENT_SERVICE_ORDER_LIST_DELETE_ORDER_BY_PRODUCT_CODE = "${app.routesController.requestMapping.secure.payment-service.deleteByProductCode}";
 
-    public static final String REQUEST_SECURE_REST_CONTROLLER_PAYMENT_SERVICE_ORDER_LIST_BUY = "${app.routesController.requestMapping.secure.payment-service.buyItemsInCart}";
+    public static final String REQUEST_SECURE_REST_CONTROLLER_PAYMENT_SERVICE_SHOPPING_CART_CHECKOUT = "${app.routesController.requestMapping.secure.payment-service.buyItemsInCart}";
 
     public static final String REQUEST_SECURE_REST_CONTROLLER_PAYMENT_SERVICE_QUERY_BY_TRACKING_NUMBER = "${app.routesController.requestMapping.secure.payment-service.queryByTrackingNumber}";
 

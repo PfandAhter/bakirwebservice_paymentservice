@@ -1,6 +1,7 @@
 package com.bakirwebservice.paymentservice.rest.service;
 
 import com.bakirwebservice.paymentservice.api.response.BuyOrdersOnCartTrackingNumberResponse;
+import com.bakirwebservice.paymentservice.model.Status;
 import com.bakirwebservice.paymentservice.model.entity.OrderList;
 import com.bakirwebservice.paymentservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class OrderListServiceImpl {
     public BuyOrdersOnCartTrackingNumberResponse buyItemsInCartResponseTrackingNumber (String localUsername, String productCode , int orderQuantity , String trackingNumber , Long cost){
         OrderList orderList = new OrderList();
 
-        orderList.setActive(1);
+        orderList.setActive(Status.ACTIVE.toString());
         orderList.setTrackingNumber(trackingNumber);
         orderList.setCustomerName(localUsername);
         orderList.setProductCode(productCode);

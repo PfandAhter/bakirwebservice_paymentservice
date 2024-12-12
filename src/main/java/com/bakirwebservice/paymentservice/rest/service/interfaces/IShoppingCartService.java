@@ -2,18 +2,16 @@ package com.bakirwebservice.paymentservice.rest.service.interfaces;
 
 import com.bakirwebservice.paymentservice.api.request.*;
 import com.bakirwebservice.paymentservice.api.response.BaseResponse;
-import com.bakirwebservice.paymentservice.api.response.BuyOrdersOnCartTrackingNumberResponse;
 import com.bakirwebservice.paymentservice.api.response.GetItemsListInCartResponse;
-import com.bakirwebservice.paymentservice.exceptions.CartListEmptyException;
-import com.bakirwebservice.paymentservice.exceptions.InsufficientBalanceException;
+import com.bakirwebservice.paymentservice.exceptions.ShoppingCartEmptyException;
 
 public interface IShoppingCartService {
-    BaseResponse deleteItemOnCart(DeleteItemRequest request);
+    BaseResponse deleteFromCart(DeleteFromCartRequest request);
 
-    BaseResponse addItemOnCart(AddItemRequest request);
+    BaseResponse addToCart(AddToCartRequest request);
 
-    GetItemsListInCartResponse getItemListInCart(BaseRequest request)throws CartListEmptyException;
+    GetItemsListInCartResponse getShoppingCart(BaseRequest request)throws ShoppingCartEmptyException;
 
-    BuyOrdersOnCartTrackingNumberResponse buyOrdersOnCartsAndReturnTrackingNumber(BaseRequest request)throws CartListEmptyException , InsufficientBalanceException;
+    void startShoppingCartCheckout(ShoppingCartCheckoutRequest request);
 
 }
